@@ -1,9 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
+import Booking from "src/pages/Booking";
+import Dashboard from "src/pages/Dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Dashboard />,
+  },
+  {
+    path: "/booking",
+    element: <Booking />,
   },
 ]);
 
