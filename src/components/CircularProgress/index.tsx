@@ -1,9 +1,9 @@
-import { FC, ReactNode } from "react";
+import { FC, PropsWithChildren, ReactNode } from "react";
 import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
-const CircularProgress: FC<Props> = ({ children }) => {
+const CircularProgress: FC<PropsWithChildren<Props>> = ({ children }) => {
   return (
     <CircularProgressbarWithChildren
       value={89}
@@ -25,6 +25,4 @@ const CircularProgress: FC<Props> = ({ children }) => {
 
 export default CircularProgress;
 
-interface Props {
-  children: ReactNode;
-}
+interface Props {}

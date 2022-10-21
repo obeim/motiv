@@ -1,15 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import Booking from "src/pages/Booking";
 import Dashboard from "src/pages/Dashboard";
+import DashboardLayout from "src/layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: (
+      <DashboardLayout>
+        <Dashboard />
+      </DashboardLayout>
+    ),
   },
   {
     path: "/booking",
-    element: <Booking />,
+    element: (
+      <DashboardLayout>
+        <Booking />
+      </DashboardLayout>
+    ),
   },
 ]);
 
