@@ -38,7 +38,7 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
         </div>
       </div>
       <div className="overflow-y-scroll h-screen w-full bg-neutral-100 ">
-        <div className="pl-8 mt-20 lg:mt-28 max-w-7xl mx-auto">{children}</div>
+        <div className="pl-8 mt-20 lg:mt-28 max-w-7xl">{children}</div>
       </div>
     </div>
   );

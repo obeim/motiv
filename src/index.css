@@ -10,4 +10,11 @@
     src: local("DM Sans Regular"),
       url("../public/fonts/DMSans-Regular.woff") format("woff");
   }
+  @font-face {
+    font-family: "Effra";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Effra Regular"),
+      url("../public/fonts/Effra-Regular.woff") format("woff");
+  }
 }
