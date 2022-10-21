@@ -19,7 +19,7 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
         ]}
       />
       <div>
-        <div className="fixed right-0 top-0 h-16 z-10 lg:h-20 bg-white  2xl:w-[calc(100%-20rem-2px)] xl:w-[calc(100%-18rem-2px)] lg:w-[calc(100%-16rem-2px)] md:w-[calc(100%-15rem-2px)] w-full">
+        <div className="fixed right-0 top-0 h-16 z-10 lg:h-20 bg-white 2xl:w-[calc(100%-18rem-2px)]  md:w-[calc(100%-15rem-2px)] w-full">
           <div className="flex w-full p-4 items-center h-full justify-between">
             <Search />
             <MenuIcon
@@ -37,8 +37,8 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-scroll h-screen w-full bg-neutral-100">
-        <div className="pl-8 mt-20 lg:mt-24">{children}</div>
+      <div className="overflow-y-scroll h-screen w-full bg-neutral-100 ">
+        <div className="pl-8 mt-20 lg:mt-28 max-w-7xl mx-auto">{children}</div>
       </div>
     </div>
   );

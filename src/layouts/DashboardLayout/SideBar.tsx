@@ -8,7 +8,7 @@ export function SideBar({ show, setShow, items }: SideBarProps) {
   return (
     <div>
       <div
-        className={`fixed transition-opacity duration-300 2xl:w-80 xl:w-72 lg:w-64 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-20 ${
+        className={`fixed transition-opacity duration-300 2xl:w-72 xl:w-60 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-20 ${
           !show && "opacity-0"
         } px-5 py-9`}
       >
@@ -44,7 +44,7 @@ export function SideBar({ show, setShow, items }: SideBarProps) {
           </div>
         </div>
       </div>
-      <div className="2xl:w-80 xl:w-72 lg:w-64 w-60 h-screen md:block hidden"></div>
+      <div className="2xl:w-72 xl:w-60 w-60 h-screen md:block hidden"></div>
     </div>
   );
 }

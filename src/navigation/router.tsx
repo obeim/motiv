@@ -1,14 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import Booking from "src/pages/Booking";
-import Dashboard from "src/pages/Dashboard";
+import { lazy, Suspense } from "react";
 import DashboardLayout from "src/layouts/DashboardLayout";
+const Dashboard = lazy(() => import("src/pages/Dashboard"));
+const Booking = lazy(() => import("src/pages/Booking"));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <DashboardLayout>
-        <Dashboard />
+        <Suspense>
+          <Dashboard />
+        </Suspense>
       </DashboardLayout>
     ),
   },
@@ -16,7 +19,9 @@ const router = createBrowserRouter([
     path: "/booking",
     element: (
       <DashboardLayout>
-        <Booking />
+        <Suspense>
+          <Booking />
+        </Suspense>
       </DashboardLayout>
     ),
   },

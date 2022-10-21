@@ -11,9 +11,10 @@ module.exports = {
           dark: "#242731",
           white: "#E0E4E7",
           purple: "#A162F7",
+          carrot: "#FFE0BA",
         },
         secondary: {
-          purple: "#A162F7",
+          purple: "#A66FF0",
           blue: "#2884FF",
           yellow: "#F6CC0D",
           red: "#FF6370",
@@ -29,6 +30,9 @@ module.exports = {
           dark1: "#242731",
           dark: "#1F2128",
         },
+      },
+      borderRadius: {
+        xl: "14px",
       },
       height: {
         90: "90%",
