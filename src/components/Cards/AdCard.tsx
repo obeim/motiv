@@ -3,7 +3,7 @@ import Desk from "src/assets/images/3-designer-desk-2.png";
 const AdCard = ({ container }: AdCardProps) => {
   return (
     <div
-      className={`2xl:h-60 md:h-60 h-auto rounded bg-primary-carrot ${container}`}
+      className={`2xl:h-60 md:h-auto h-auto rounded bg-primary-carrot ${container}`}
     >
       <div className="flex items-center h-full md:justify-between md:p-6 p-10 gap-4 lg:px-7 flex-wrap">
         <div className="my-auto">
@@ -20,7 +20,7 @@ const AdCard = ({ container }: AdCardProps) => {
         <img
           src={Desk}
           alt="desk"
-          className="lg:h-full h-auto mx-auto xl:block xl:mx-0 hidden"
+          className="lg:h-full h-auto md:mx-auto mx-auto  lg:block xl:mx-0 hidden"
         />
       </div>
     </div>

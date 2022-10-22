@@ -13,7 +13,7 @@ export function RecommendCard({
 }: RecommendCardProps) {
   return (
     <div
-      className={`2xl:w-96 xl:w-80 md:w-72 sm:w-60 w-full  h-64 rounded-xl  px-6 py-4 flex flex-col justify-between ${
+      className={`2xl:w-96 xl:w-80 md:w-72  w-full  h-64 rounded-xl  px-6 py-4 flex flex-col justify-between ${
         container || "bg-tertiary-1"
       }`}
     >
@@ -23,7 +23,7 @@ export function RecommendCard({
       </div>
       <img
         alt="carImage"
-        className="xl:w-4/5 max-w-xs"
+        className="xl:w-4/5 max-w-xs mx-auto"
         src={car_image || Car}
       />
       <div className="text-xl font-bold">{car_name || "Mini Cooper"}</div>

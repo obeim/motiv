@@ -51,16 +51,20 @@ const Dashboard: FC = () => {
         />
         <div className=" w-full xl:col-span-4 flex-1 lg:col-span-3 md:col-span-2 sm:col-span-2 col-span-1">
           <div className="flex flex-wrap gap-6 justify-between w-full">
-            <div className="2xl:w-6/10 xl:w-55/10  w-full">
-              <AdCard />
-            </div>
-            <div className="flex gap-6  flex-wrap">
-              <RewardCard />
-              <RewardCard
-                container="bg-pompadour-100"
-                commonColor="text-romantic-100"
-                image={Running}
-              />
+            <div className="2xl:col-span-1 gap-5 lg:col-span-2  w-full xl:justify-between flex flex-wrap ">
+              <div className="xl:w-3/6 w-full">
+                <AdCard />
+              </div>
+              <div className="xl:w-1/5">
+                <RewardCard />
+              </div>
+              <div className="xl:w-1/5">
+                <RewardCard
+                  container="bg-pompadour-100"
+                  commonColor="text-romantic-100"
+                  image={Running}
+                />
+              </div>
             </div>
           </div>
         </div>
