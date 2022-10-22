@@ -19,7 +19,7 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
         ]}
       />
       <div>
-        <div className="fixed right-0 top-0 h-16 z-10 lg:h-20 bg-white 2xl:w-[calc(100%-18rem-2px)]  md:w-[calc(100%-15rem-2px)] w-full">
+        <div className="fixed right-0 top-0 h-16 lg:h-20 bg-white 2xl:w-[calc(100%-18rem-2px)]  md:w-[calc(100%-15rem-2px)] w-full">
           <div className="flex w-full p-4 items-center h-full justify-between">
             <Search />
             <MenuIcon

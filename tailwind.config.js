@@ -42,6 +42,10 @@ module.exports = {
         romantic: {
           100: "#FAC39B",
         },
+        tertiary: {
+          1: "#E1DFA4",
+          2: "#E3ECF1",
+        },
       },
       borderRadius: {
         xl: "14px",

@@ -1,12 +1,15 @@
 import { FC } from "react";
-import PrecentCard from "src/components/Cards/PrecentCard";
-import Range from "src/assets/icons/Range.svg";
-import Lighting from "src/assets/icons/lighting.svg";
+import Car2 from "src/assets/images/car2.png";
+import Car3 from "src/assets/images/car3.png";
 import Drop from "src/assets/icons/drop.svg";
 import Tier from "src/assets/icons/tier.svg";
+import Range from "src/assets/icons/Range.svg";
 import AdCard from "src/components/Cards/AdCard";
+import Lighting from "src/assets/icons/lighting.svg";
+import PrecentCard from "src/components/Cards/PrecentCard";
 import Running from "src/assets/images/36. people-rushing-3.png";
 import { RewardCard } from "../components/Cards/RewardCard";
+import { RecommendCard } from "../components/Cards/RecommendCard";
 
 const Dashboard: FC = () => {
   return (
@@ -46,12 +49,12 @@ const Dashboard: FC = () => {
           progressText="25%"
           progressProps={{ text: "text-black", pathColor: "#F6CC0D" }}
         />
-        <div className=" w-full xl:col-span-4 lg:col-span-3 md:col-span-2 sm:col-span-2 col-span-1">
+        <div className=" w-full xl:col-span-4 flex-1 lg:col-span-3 md:col-span-2 sm:col-span-2 col-span-1">
           <div className="flex flex-wrap gap-6 justify-between w-full">
-            <div className="xl:w-55/10  w-full">
+            <div className="2xl:w-6/10 xl:w-55/10  w-full">
               <AdCard />
             </div>
-            <div className="flex gap-3 flex-wrap">
+            <div className="flex gap-6  flex-wrap">
               <RewardCard />
               <RewardCard
                 container="bg-pompadour-100"
@@ -61,6 +64,11 @@ const Dashboard: FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="my-6 flex 2xl:justify-between flex-wrap gap-6">
+        <RecommendCard />
+        <RecommendCard car_image={Car2} container="bg-tertiary-2" />
+        <RecommendCard car_image={Car3} container="bg-red-100" />
       </div>
       <div className="w-full text-carrot-100 mt-5 flex flex-wrap justify-between gap-3"></div>
     </div>
