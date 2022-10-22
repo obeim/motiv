@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       dm: "DM Sans, sans-serif",
       effra: "Effra Regular",
+      poppins: "Poppins",
     },
     extend: {
       colors: {

@@ -8,12 +8,12 @@ import AdCard from "src/components/Cards/AdCard";
 import Lighting from "src/assets/icons/lighting.svg";
 import PrecentCard from "src/components/Cards/PrecentCard";
 import Running from "src/assets/images/36. people-rushing-3.png";
-import { RewardCard } from "../components/Cards/RewardCard";
-import { RecommendCard } from "../components/Cards/RecommendCard";
+import { RewardCard } from "src/components/Cards/RewardCard";
+import { RecommendCard } from "src/components/Cards/RecommendCard";
 
 const Dashboard: FC = () => {
   return (
-    <div>
+    <div className="max-w-7xl">
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center gap-9">
         <PrecentCard
           container="bg-primary-purple"
@@ -71,8 +71,16 @@ const Dashboard: FC = () => {
       </div>
       <div className="my-6 flex 2xl:justify-between flex-wrap gap-6">
         <RecommendCard />
-        <RecommendCard car_image={Car2} container="bg-tertiary-2" />
-        <RecommendCard car_image={Car3} container="bg-red-100" />
+        <RecommendCard
+          car_image={Car2}
+          container="bg-tertiary-2"
+          car_name="Porsche 911 Carrera"
+        />
+        <RecommendCard
+          car_image={Car3}
+          container="bg-red-100"
+          car_name="Porsche 911 Carrera"
+        />
       </div>
       <div className="w-full text-carrot-100 mt-5 flex flex-wrap justify-between gap-3"></div>
     </div>

@@ -9,7 +9,7 @@ import Booking from "src/assets/icons/Car.svg";
 const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
   const [showBar, setShow] = useState<boolean>(false);
   return (
-    <div className="flex select-none">
+    <div className="flex select-none ">
       <SideBar
         show={showBar}
         setShow={setShow}
@@ -18,7 +18,7 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
           { label: "Cars", icon: Booking, path: "/booking" },
         ]}
       />
-      <div>
+      <div className="z-40">
         <div className="fixed right-0 top-0 h-16 lg:h-20 bg-white 2xl:w-[calc(100%-18rem-2px)]  md:w-[calc(100%-15rem-2px)] w-full">
           <div className="flex w-full p-4 items-center h-full justify-between">
             <Search />
@@ -37,8 +37,8 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-scroll h-screen w-full bg-neutral-100 ">
-        <div className="pl-8 mt-20 lg:mt-28 max-w-7xl">{children}</div>
+      <div className="overflow-y-scroll h-screen z-20 w-full bg-neutral-100 ">
+        <div className="pl-8 mt-20 lg:mt-28 max-w-8xl">{children}</div>
       </div>
     </div>
   );

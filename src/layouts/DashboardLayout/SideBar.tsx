@@ -1,15 +1,15 @@
 import Logo from "src/assets/images/logo.svg";
 import Settings from "src/assets/icons/settings.svg";
 import Logout from "src/assets/icons/signout.svg";
-
+import { Fragment } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export function SideBar({ show, setShow, items }: SideBarProps) {
   return (
     <div>
       <div
-        className={`fixed transition-opacity duration-300 2xl:w-72 xl:w-60 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-20 ${
-          !show && "opacity-0"
+        className={`fixed transition-opacity duration-300 2xl:w-72 xl:w-60 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-30 ${
+          !show && "opacity-0 z-10"
         } px-5 py-9`}
       >
         <div className=" flex items-center gap-4">
@@ -24,17 +24,18 @@ export function SideBar({ show, setShow, items }: SideBarProps) {
             {items &&
               items.map((item, index) => {
                 return (
-                  <VerticalLink
-                    key={index}
-                    label={item.label}
-                    icon={item.icon}
-                    path={item.path}
-                    onClick={() => {
-                      if (setShow) {
-                        setShow(false);
-                      }
-                    }}
-                  />
+                  <Fragment key={index}>
+                    <VerticalLink
+                      label={item.label}
+                      icon={item.icon}
+                      path={item.path}
+                      onClick={() => {
+                        if (setShow) {
+                          setShow(false);
+                        }
+                      }}
+                    />
+                  </Fragment>
                 );
               })}
           </div>
