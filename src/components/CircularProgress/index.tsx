@@ -21,6 +21,7 @@ const CircularProgress: FC<PropsWithChildren<CircularProgressProps>> = ({
         pathColor: pathColor || "#FF7E86",
         textColor: "#242731",
         strokeLinecap: "round",
+        pathTransition: "transition",
       })}
     >
       <div

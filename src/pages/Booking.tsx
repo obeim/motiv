@@ -8,6 +8,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import DashboardLayout from "src/layouts/DashboardLayout";
 import Modal from "src/components/Modal";
 import Car from "src/assets/images/item.png";
+import { motion } from "framer-motion";
 
 const CarCard = lazy(() => import("src/components/Cards/CarCard"));
 
@@ -37,7 +38,9 @@ const Booking: FC = () => {
           setLoading(false);
         });
     }
-    getItems();
+    setTimeout(() => {
+      getItems();
+    }, 200);
   }, []);
 
   return (
@@ -56,39 +59,8 @@ const Booking: FC = () => {
         },
       }}
     >
-      <Modal
-        isOpen={modal}
-        Close={() => {
-          setModal(false);
-        }}
-      >
-        <div className={` w-full   px-6 py-5 flex flex-col  ${"bg-white"}`}>
-          <div>
-            <div className="flex items-center justify-between">
-              <div className="lg:text-lg text-gray-dark1 font-bold">
-                {item?.car_name}
-              </div>
-            </div>
-            <div className="text-gray-dark3">{item?.type}</div>
-          </div>
-          <div className="mt-2">
-            <div className=" text-gray-dark3 lg:text-lg">
-              <div className="inline-flex items-center gap-2">
-                <div>{item?.seats || 4}</div>
-                <div>Seats</div>
-              </div>
-
-              <div>Manual</div>
-            </div>
-            <div className="lg:text-lg text-primary-dark font-medium">
-              Cost {"$" + parseInt(item?.price || "") || "400$"}
-              <span className="text-gray-dark3 font-normal">/d</span>
-            </div>
-          </div>
-          <img alt="carImage" className="xl:w-4/5 w-4/5  mx-auto" src={Car} />
-        </div>
-      </Modal>
-      <div>
+      <DetailsModal item={item} setModal={setModal} modal={modal} />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <div className="mdLtext-3xl text-2xl font-bold leading-10">Booking</div>
         <div className="flex my-10 items-center justify-between pr-8">
           <div className="flex  gap-8 items-center flex-wrap">
@@ -158,7 +130,7 @@ const Booking: FC = () => {
             There is nothing to look at
           </div>
         )}
-      </div>
+      </motion.div>
     </DashboardLayout>
   );
 };
@@ -172,4 +144,48 @@ interface itemType {
   seats: number;
   isManual: boolean;
   id: string;
+}
+function DetailsModal({
+  modal,
+  setModal,
+  item,
+}: {
+  modal: boolean;
+  setModal: Function;
+  item: itemType | undefined;
+}) {
+  return (
+    <Modal
+      isOpen={modal}
+      Close={() => {
+        setModal(false);
+      }}
+    >
+      <div className={` w-full   px-6 flex flex-col gap-3  ${"bg-white"}`}>
+        <div>
+          <div className="flex items-center  ">
+            <div className=" text-2xl md:text-4xl text-gray-dark1 font-bold">
+              {item?.car_name}
+            </div>
+          </div>
+          <div className="text-gray-dark3">{item?.type}</div>
+        </div>
+        <div className="mt-2">
+          <div className=" text-gray-dark3 lg:text-lg">
+            <div className="inline-flex items-center gap-2">
+              <div>{item?.seats || 4}</div>
+              <div>Seats</div>
+            </div>
+
+            <div>Manual</div>
+          </div>
+          <div className="lg:text-lg text-primary-dark font-medium">
+            Cost {"$" + parseInt(item?.price || "") || "400$"}
+            <span className="text-gray-dark3 font-normal">/d</span>
+          </div>
+        </div>
+        <img alt="carImage" className="xl:w-4/5 w-4/5  mx-auto" src={Car} />
+      </div>
+    </Modal>
+  );
 }
