@@ -14,6 +14,7 @@ const CircularProgress: FC<PropsWithChildren<CircularProgressProps>> = ({
       value={57}
       circleRatio={0.7}
       strokeWidth={10}
+      className="z-0"
       styles={buildStyles({
         rotation: 1 / 2 + 1 / 8,
         trailColor: trailColor || "#F4F5F9",

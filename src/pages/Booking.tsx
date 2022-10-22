@@ -6,6 +6,8 @@ import { Select } from "src/components/Select";
 import { CardSkeleton, SkeletonList } from "src/components/Cards/CarCard";
 import "react-loading-skeleton/dist/skeleton.css";
 import DashboardLayout from "src/layouts/DashboardLayout";
+import Modal from "src/components/Modal";
+import Car from "src/assets/images/item.png";
 
 const CarCard = lazy(() => import("src/components/Cards/CarCard"));
 
@@ -15,6 +17,8 @@ const Booking: FC = () => {
   const [items, setItems] = useState<itemType[]>([]);
   const [types, setTypes] = useState<any[]>([]);
   const [err, setError] = useState<string | null>(null);
+  const [modal, setModal] = useState<boolean>(false);
+  const [item, setItem] = useState<itemType>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const Booking: FC = () => {
         onChange: (e) => {
           if (e.target.value) {
             setFilterd(
-              items.filter((item) =>
+              filtered.filter((item) =>
                 item.car_name
                   .toLowerCase()
                   .includes(e.target.value.toLocaleLowerCase())
@@ -52,9 +56,41 @@ const Booking: FC = () => {
         },
       }}
     >
+      <Modal
+        isOpen={modal}
+        Close={() => {
+          setModal(false);
+        }}
+      >
+        <div className={` w-full   px-6 py-5 flex flex-col  ${"bg-white"}`}>
+          <div>
+            <div className="flex items-center justify-between">
+              <div className="lg:text-lg text-gray-dark1 font-bold">
+                {item?.car_name}
+              </div>
+            </div>
+            <div className="text-gray-dark3">{item?.type}</div>
+          </div>
+          <div className="mt-2">
+            <div className=" text-gray-dark3 lg:text-lg">
+              <div className="inline-flex items-center gap-2">
+                <div>{item?.seats || 4}</div>
+                <div>Seats</div>
+              </div>
+
+              <div>Manual</div>
+            </div>
+            <div className="lg:text-lg text-primary-dark font-medium">
+              Cost {"$" + parseInt(item?.price || "") || "400$"}
+              <span className="text-gray-dark3 font-normal">/d</span>
+            </div>
+          </div>
+          <img alt="carImage" className="xl:w-4/5 w-4/5  mx-auto" src={Car} />
+        </div>
+      </Modal>
       <div>
         <div className="mdLtext-3xl text-2xl font-bold leading-10">Booking</div>
-        <div className="flex my-10 items-center justify-between">
+        <div className="flex my-10 items-center justify-between pr-8">
           <div className="flex  gap-8 items-center flex-wrap">
             <div className="w-32">
               <Select placeholder="New" />
@@ -104,7 +140,13 @@ const Booking: FC = () => {
         <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center gap-9 my-6">
           {filtered.map((item: any) => (
             <Suspense fallback={<CardSkeleton />} key={item.id}>
-              <CarCard {...item} />
+              <CarCard
+                onClick={(item: itemType) => {
+                  setModal(true);
+                  setItem(item);
+                }}
+                {...item}
+              />
             </Suspense>
           ))}
 
@@ -113,7 +155,7 @@ const Booking: FC = () => {
         </div>
         {filtered.length === 0 && (
           <div className="text-center text-gray-400 w-full">
-            There is nothing look at
+            There is nothing to look at
           </div>
         )}
       </div>

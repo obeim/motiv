@@ -8,8 +8,8 @@ export function SideBar({ show, setShow, items }: SideBarProps) {
   return (
     <div>
       <div
-        className={`fixed transition-opacity duration-300 2xl:w-72 xl:w-60 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-30 ${
-          !show && "opacity-0 z-10"
+        className={`fixed transition-all duration-300 2xl:w-72 md:left-0 xl:w-60 w-60 h-full  bg-white left-0 top-0 md:opacity-100 md:block z-30 ${
+          !show && " -left-full z-10"
         } px-5 py-9`}
       >
         <div className=" flex items-center gap-4">

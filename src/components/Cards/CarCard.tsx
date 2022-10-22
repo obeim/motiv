@@ -12,6 +12,7 @@ export function CarCard({
   seats,
   price,
   isManual,
+  onClick,
 }: CarCardProps) {
   const [fav, setFav] = useState(false);
 
@@ -21,7 +22,12 @@ export function CarCard({
     >
       <div>
         <div className="flex items-center justify-between">
-          <div className="lg:text-lg text-gray-dark1 font-bold">
+          <div
+            className="lg:text-lg text-gray-dark1 font-bold cursor-pointer"
+            onClick={() => {
+              onClick({ car_name, type, image, seats, price });
+            }}
+          >
             {car_name || "Porshe 718 Cayman S"}
           </div>
           <HearOultined
@@ -64,6 +70,7 @@ export function CarCard({
     </div>
   );
 }
+
 export const CardSkeleton = () => {
   return (
     <div
@@ -88,4 +95,5 @@ interface CarCardProps {
   seats?: string | number;
   price?: string;
   isManual?: boolean;
+  onClick: Function;
 }
