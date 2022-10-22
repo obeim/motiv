@@ -18,10 +18,10 @@ export function CarCard({
 
   return (
     <div
-      className={` md:w-80  w-full   h-64 rounded-xl  px-6 py-5 flex flex-col justify-between ${"bg-white"}`}
+      className={` md:w-80 w-full h-64 rounded-xl  px-6 py-5 flex flex-col justify-between  ${"bg-white"}`}
     >
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <div
             className="lg:text-lg text-gray-dark1 font-bold cursor-pointer"
             onClick={() => {
@@ -46,7 +46,10 @@ export function CarCard({
       </div>
       <img
         alt="carImage"
-        className="xl:w-4/5 w-4/5 max-w-xs mx-auto"
+        className="xl:w-4/5 w-4/5 max-w-xs mx-auto cursor-pointer"
+        onClick={() => {
+          onClick({ car_name, type, image, seats, price });
+        }}
         src={image || Car}
       />
       <div className="mt-2 flex justify-between">

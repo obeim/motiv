@@ -25,7 +25,7 @@ const CircularProgress: FC<PropsWithChildren<CircularProgressProps>> = ({
       })}
     >
       <div
-        className={`text-3xl font-bold ${
+        className={`md:text-2xl mt-2 md:mt-0 text-2xl font-bold ${
           text || "primary-dark"
         } relative bottom-2`}
       >

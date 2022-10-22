@@ -42,7 +42,7 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({
           </div>
         </div>
         <div className="w-full h-full bg-neutral-100 ">
-          <div className="lg:pl-8 pl-3 mt-20 lg:mt-28 max-w-8xl">
+          <div className="lg:pl-8 px-2 mt-20 lg:mt-28 max-w-8xl">
             {children}
           </div>
         </div>
