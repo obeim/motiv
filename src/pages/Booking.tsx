@@ -1,12 +1,34 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect, lazy, Suspense } from "react";
 import { ReactComponent as Grid } from "src/assets/icons/grid.svg";
 import { ReactComponent as Filter } from "src/assets/icons/filter.svg";
 import { IconButton } from "src/components/IconButton";
 import { Select } from "src/components/Select";
-import { CarCard } from "../components/Cards/CarCard";
+import { CardSkeleton, SkeletonList } from "src/components/Cards/CarCard";
+import "react-loading-skeleton/dist/skeleton.css";
+
+const CarCard = lazy(() => import("src/components/Cards/CarCard"));
 const Booking: FC = () => {
   const [selected, setSelected] = useState(1);
-  const [fav, setFav] = useState(false);
+  const [items, setItems] = useState<itemType[]>([]);
+  const [err, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getItems() {
+      fetch("https://6353c4d3ccce2f8c02fc556b.mockapi.io/api/booking/cars")
+        .then((response) => response.json())
+        .then((data) => {
+          setItems(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+    getItems();
+  }, []);
+
   return (
     <div>
       <div className="mdLtext-3xl text-2xl font-bold leading-10">Booking</div>
@@ -50,39 +72,26 @@ const Booking: FC = () => {
       </div>
 
       <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center gap-9 my-6">
-        <CarCard
-          isFav={fav}
-          onClickFav={() => {
-            setFav(!fav);
-          }}
-        />
-        <CarCard
-          isFav={fav}
-          onClickFav={() => {
-            setFav(!fav);
-          }}
-        />
-        <CarCard
-          isFav={fav}
-          onClickFav={() => {
-            setFav(!fav);
-          }}
-        />
-        <CarCard
-          isFav={fav}
-          onClickFav={() => {
-            setFav(!fav);
-          }}
-        />
-        <CarCard
-          isFav={fav}
-          onClickFav={() => {
-            setFav(!fav);
-          }}
-        />
+        {items.map((item: any) => (
+          <Suspense fallback={<CardSkeleton />} key={item.id}>
+            <CarCard {...item} />
+          </Suspense>
+        ))}
+
+        {loading && SkeletonList()}
+        {err && <div>{err}</div>}
       </div>
     </div>
   );
 };
 
 export default Booking;
+
+interface itemType {
+  car_name: string;
+  type: string;
+  price: string;
+  seats: number;
+  isManual: boolean;
+  id: string;
+}

@@ -1,9 +1,8 @@
-import { MouseEventHandler } from "react";
 import { ReactComponent as HearOultined } from "src/assets/icons/heartOutlined.svg";
 import Car from "src/assets/images/item.png";
 import { ReactComponent as Type } from "src/assets/icons/type.svg";
 import { ReactComponent as Person } from "src/assets/icons/person.svg";
-
+import { useState } from "react";
 export function CarCard({
   isFav,
   onClickFav,
@@ -14,6 +13,8 @@ export function CarCard({
   price,
   isManual,
 }: CarCardProps) {
+  const [fav, setFav] = useState(false);
+
   return (
     <div
       className={` xl:w-80  w-full  h-64 rounded-xl  px-6 py-5 flex flex-col justify-between ${"bg-white"}`}
@@ -24,9 +25,14 @@ export function CarCard({
             {car_name || "Porshe 718 Cayman S"}
           </div>
           <HearOultined
-            onClick={onClickFav}
+            onClick={() => {
+              if (onClickFav) {
+                onClickFav();
+              }
+              setFav(!fav);
+            }}
             className={`${
-              isFav ? "fill-rose-500" : "stroke-gray-dark6"
+              isFav || fav ? "fill-rose-500" : "stroke-gray-dark6"
             } w-6 h-6 cursor-pointer`}
           />
         </div>
@@ -51,20 +57,35 @@ export function CarCard({
           )}
         </div>
         <div className="lg:text-lg text-primary-dark font-medium">
-          {price || "400$"}
+          {"$" + parseInt(price || "") || "400$"}
           <span className="text-gray-dark3 font-normal">/d</span>
         </div>
       </div>
     </div>
   );
 }
+export const CardSkeleton = () => {
+  return (
+    <div
+      className={` xl:w-80  w-full  h-64 rounded-xl  px-6 py-5 flex flex-col justify-between ${"bg-gray-300"}`}
+    ></div>
+  );
+};
+export function SkeletonList() {
+  let list = [];
+  for (let i = 0; i < 20; i++) {
+    list.push(<CardSkeleton key={i} />);
+  }
+  return list;
+}
+export default CarCard;
 interface CarCardProps {
   isFav?: boolean;
-  onClickFav?: MouseEventHandler<SVGSVGElement> | undefined;
+  onClickFav?: () => void;
   car_name?: string;
   type?: string;
   image?: string;
   seats?: string | number;
-  price?: string | number;
+  price?: string;
   isManual?: boolean;
 }
