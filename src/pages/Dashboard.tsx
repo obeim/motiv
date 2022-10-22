@@ -48,9 +48,9 @@ const Dashboard: FC = () => {
           animate={{ opacity: 1 }}
           className="max-w-7xl"
         >
-          <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center gap-9">
+          <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 md:justify-items-start justify-items-center	 gap-3">
             <PrecentCard
-              container="bg-primary-purple"
+              container="bg-primary-purple auto"
               title="Energy"
               iconContainer="bg-secondary-purple"
               titleColor="white"
@@ -84,26 +84,24 @@ const Dashboard: FC = () => {
               progressProps={{ text: "text-black", pathColor: "#F6CC0D" }}
             />
             <div className=" w-full xl:col-span-4 flex-1 lg:col-span-3 md:col-span-2 sm:col-span-2 col-span-1">
-              <div className="flex flex-wrap gap-6 justify-between w-full">
-                <div className="2xl:col-span-1 gap-5 lg:col-span-2  w-full xl:justify-between flex flex-wrap ">
-                  <div className="xl:w-3/6 w-full">
-                    <AdCard />
-                  </div>
-                  <div className="xl:w-1/5">
-                    <RewardCard />
-                  </div>
-                  <div className="xl:w-1/5">
-                    <RewardCard
-                      container="bg-pompadour-100"
-                      commonColor="text-romantic-100"
-                      image={Running}
-                    />
-                  </div>
+              <div className="2xl:col-span-1 gap-5 lg:col-span-2  w-full items-center md:justify-start justify-center flex flex-wrap ">
+                <div className="xl:w-3/6 w-full">
+                  <AdCard />
+                </div>
+                <div className="xl:w-1/5">
+                  <RewardCard />
+                </div>
+                <div className="xl:w-1/5">
+                  <RewardCard
+                    container="bg-pompadour-100"
+                    commonColor="text-romantic-100"
+                    image={Running}
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className="my-6 flex 2xl:justify-between flex-wrap gap-6">
+          <div className="my-6 flex md:justify-start justify-center flex-wrap gap-2">
             <RecommendCard />
             <RecommendCard
               car_image={Car2}

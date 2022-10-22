@@ -61,7 +61,7 @@ const Booking: FC = () => {
     >
       <DetailsModal item={item} setModal={setModal} modal={modal} />
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <div className="mdLtext-3xl text-2xl font-bold leading-10">Booking</div>
+        <div className="md:text-3xl text-2xl font-bold leading-10">Booking</div>
         <div className="flex my-10 items-center justify-between pr-8">
           <div className="flex  gap-8 items-center flex-wrap">
             <div className="w-32">
@@ -109,7 +109,7 @@ const Booking: FC = () => {
           </div>
         </div>
 
-        <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center gap-9 my-6">
+        <div className="flex flex-wrap w-full   justify-center md:justify-start items-center xl:gap-7 gap-3 my-6">
           {filtered.map((item: any) => (
             <Suspense fallback={<CardSkeleton />} key={item.id}>
               <CarCard

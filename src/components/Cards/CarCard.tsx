@@ -18,7 +18,7 @@ export function CarCard({
 
   return (
     <div
-      className={` xl:w-80  w-full  h-64 rounded-xl  px-6 py-5 flex flex-col justify-between ${"bg-white"}`}
+      className={` md:w-80  w-full   h-64 rounded-xl  px-6 py-5 flex flex-col justify-between ${"bg-white"}`}
     >
       <div>
         <div className="flex items-center justify-between">

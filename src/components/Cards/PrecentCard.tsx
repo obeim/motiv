@@ -11,7 +11,10 @@ const PrecentCard = ({
   container,
 }: Props) => {
   return (
-    <div className={`md:h-80 w-full rounded-xl ${container || "bg-white"}`}>
+    <div
+      className={`md:h-80 w-full rounded-xl ${container || "bg-white"}`}
+      style={{ maxWidth: "260px" }}
+    >
       <div className="w-3/4 flex flex-col mx-auto my-6">
         <div
           className={`w-10 h-10   mx-auto rounded-full flex items-center justify-center ${iconContainer}`}
