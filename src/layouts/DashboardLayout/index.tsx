@@ -90,7 +90,7 @@ function Search({ onChange }: SearchProps) {
       />
       <input
         onChange={onChange}
-        className="outline-none caret-amber-500 bg-zinc-100 h-11 w-72 rounded-lg  pl-10"
+        className="outline-none caret-amber-500 bg-zinc-100 h-11 w-72 rounded-lg pl-10"
         placeholder=" Search or type"
         type="search"
       />
