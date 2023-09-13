@@ -9,6 +9,7 @@ import DashboardLayout from "src/layouts/DashboardLayout";
 import Modal from "src/components/Modal";
 import Car from "src/assets/images/item.png";
 import { motion } from "framer-motion";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const CarCard = lazy(() => import("src/components/Cards/CarCard"));
 
@@ -21,8 +22,13 @@ const Booking: FC = () => {
   const [modal, setModal] = useState<boolean>(false);
   const [item, setItem] = useState<itemType>();
   const [loading, setLoading] = useState(true);
+  const { trackPageView } = useMatomo();
 
   useEffect(() => {
+    // @ts-ignore
+
+    trackPageView();
+
     async function getItems() {
       fetch("https://6353c4d3ccce2f8c02fc556b.mockapi.io/api/booking/cars")
         .then((response) => response.json())

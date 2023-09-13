@@ -12,6 +12,7 @@ import { RewardCard } from "src/components/Cards/RewardCard";
 import { RecommendCard } from "src/components/Cards/RecommendCard";
 import DashboardLayout from "src/layouts/DashboardLayout";
 import { motion } from "framer-motion";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const Dashboard: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -22,8 +23,11 @@ const Dashboard: FC = () => {
     break_fluid: string;
     tire_wear: string;
   }>();
+  const { trackPageView, pushInstruction } = useMatomo();
 
   useEffect(() => {
+    // @ts-ignore
+    pushInstruction("setUserId", "obei444444");
     async function getItems() {
       fetch("https://mocki.io/v1/a8e7ccd4-4bbc-41a9-9ee5-d29af099eb13")
         .then((response) => response.json())
@@ -37,6 +41,9 @@ const Dashboard: FC = () => {
         });
     }
     getItems();
+    // @ts-ignore
+
+    trackPageView();
   }, []);
   return (
     <DashboardLayout>
