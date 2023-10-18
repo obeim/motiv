@@ -6,9 +6,9 @@ import "./index.css";
 import App from "./App";
 
 const instance = createInstance({
-  urlBase: "https://versestgtamrun1.matomo.cloud/",
-  siteId: 3,
-  srcUrl: "//cdn.matomo.cloud/versestgtamrun1.matomo.cloud/matomo.js",
+  urlBase: "https://motivumbervercelapp.matomo.cloud/",
+  siteId: 1,
+  srcUrl: "//cdn.matomo.cloud/motivumbervercelapp.matomo.cloud/matomo.js",
 });
 
 const root = ReactDOM.createRoot(

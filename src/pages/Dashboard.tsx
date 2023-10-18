@@ -23,7 +23,7 @@ const Dashboard: FC = () => {
     break_fluid: string;
     tire_wear: string;
   }>();
-  const { trackPageView, pushInstruction } = useMatomo();
+  const { pushInstruction } = useMatomo();
 
   useEffect(() => {
     // @ts-ignore
@@ -42,8 +42,6 @@ const Dashboard: FC = () => {
     }
     getItems();
     // @ts-ignore
-
-    trackPageView();
   }, []);
   return (
     <DashboardLayout>

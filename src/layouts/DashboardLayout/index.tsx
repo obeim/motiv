@@ -1,16 +1,30 @@
-import { FC, PropsWithChildren, useState, ChangeEventHandler } from "react";
+import {
+  FC,
+  PropsWithChildren,
+  useState,
+  ChangeEventHandler,
+  useEffect,
+} from "react";
 import { SideBar } from "./SideBar";
 import SearchIcon from "src/assets/icons/search.svg";
 import Avatar from "src/assets/images/avatar.png";
 import Notification from "src/components/Notification";
 import DashboardIcon from "src/assets/icons/dashboard_icon.svg";
 import Booking from "src/assets/icons/Car.svg";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const DashboardLayout: FC<PropsWithChildren<Props>> = ({
   children,
   searchProps,
 }) => {
   const [showBar, setShow] = useState<boolean>(false);
+  const { trackPageView } = useMatomo();
+
+  useEffect(() => {
+    // @ts-ignore
+
+    trackPageView();
+  }, []);
   return (
     <div className="flex select-none">
       <SideBar
