@@ -12,6 +12,7 @@ import Notification from "src/components/Notification";
 import DashboardIcon from "src/assets/icons/dashboard_icon.svg";
 import Booking from "src/assets/icons/Car.svg";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
+import useVariantTest from "src/hooks/useVariantTest";
 
 const DashboardLayout: FC<PropsWithChildren<Props>> = ({
   children,
@@ -40,10 +41,12 @@ const DashboardLayout: FC<PropsWithChildren<Props>> = ({
           <div className="fixed z-10 right-0 top-0 h-16 lg:h-20 bg-white 2xl:w-[calc(100%-18rem-2px)]  md:w-[calc(100%-15rem-2px)] w-full">
             <div className="flex w-full p-4 items-center h-full justify-between">
               <Search {...searchProps} />
+
               <MenuIcon
                 className="w-6 h-6 cursor-pointer md:hidden"
                 onClick={() => setShow(!showBar)}
               />
+
               <div className="md:flex gap-9 h-full mx-2 items-center hidden ">
                 <Notification hasNew />
                 <img
@@ -95,13 +98,20 @@ interface MenuIconProps {
 }
 
 function Search({ onChange }: SearchProps) {
+  const variant = useVariantTest("SearchIconRight");
+
   return (
     <div className="relative">
       <img
         src={SearchIcon}
         alt="searchIcon"
-        className=" cursor-pointer w-7 h-7 top-2 p-1 rounded-xl absolute left-2"
+        className={`cursor-pointer w-7 h-7 top-2 p-1 rounded-xl absolute ${
+          (variant === "original" && "left-2") ||
+          (variant === "RightSearchIcon" && "right-2") ||
+          (variant === "HideSearchIcon" && "hidden")
+        } `}
       />
+
       <input
         onChange={onChange}
         className="outline-none caret-amber-500 bg-zinc-100 h-11 w-72 rounded-lg pl-10"
