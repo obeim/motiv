@@ -22,9 +22,12 @@ const Booking: FC = () => {
   const [modal, setModal] = useState<boolean>(false);
   const [item, setItem] = useState<itemType>();
   const [loading, setLoading] = useState(true);
+  const { trackPageView } = useMatomo();
 
   useEffect(() => {
     // @ts-ignore
+
+    trackPageView();
 
     async function getItems() {
       fetch("https://6353c4d3ccce2f8c02fc556b.mockapi.io/api/booking/cars")
