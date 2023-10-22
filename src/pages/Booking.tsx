@@ -10,6 +10,7 @@ import Modal from "src/components/Modal";
 import Car from "src/assets/images/item.png";
 import { motion } from "framer-motion";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { trackFormConversion } from "src/hooks/matomoUtils";
 
 const CarCard = lazy(() => import("src/components/Cards/CarCard"));
 
@@ -53,6 +54,7 @@ const Booking: FC = () => {
     <DashboardLayout
       searchProps={{
         onChange: (e) => {
+          trackFormConversion("search_form");
           if (e.target.value) {
             setFilterd(
               filtered.filter((item) =>

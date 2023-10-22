@@ -101,7 +101,7 @@ function Search({ onChange }: SearchProps) {
   const variant = useVariantTest("SearchIconRight");
 
   return (
-    <div className="relative">
+    <div className="relative" data-matomo-form data-matomo-name="search_form">
       <img
         src={SearchIcon}
         alt="searchIcon"
@@ -117,6 +117,7 @@ function Search({ onChange }: SearchProps) {
         className="outline-none caret-amber-500 bg-zinc-100 h-11 w-72 rounded-lg pl-10"
         placeholder=" Search or type"
         type="search"
+        name="search"
       />
     </div>
   );
